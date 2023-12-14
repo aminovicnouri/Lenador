@@ -25,7 +25,10 @@ import com.aminovic.lenador.R
 import com.aminovic.presentation.composables.HomeItem
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navigateToNewOrder: () -> Unit,
+    navigateToOrders: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -37,7 +40,6 @@ fun HomeScreen() {
             color = Color.Black,
             fontSize = 24.sp
         )
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -48,7 +50,7 @@ fun HomeScreen() {
             HomeItem(
                 title = stringResource(R.string.new_order),
                 icon = Icons.Filled.NoteAdd,
-                onClick = {})
+                onClick = navigateToNewOrder)
             Spacer(modifier = Modifier.width(20.dp))
             HomeItem(
                 title = stringResource(R.string.orders),

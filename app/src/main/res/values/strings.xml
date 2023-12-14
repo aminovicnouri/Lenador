@@ -3,4 +3,14 @@
     <string name="new_order">New Order</string>
     <string name="orders">Orders</string>
     <string name="report">Report</string>
+    <string name="customer_id">Customer ID: Not Required</string>
+    <string name="add_new_item">Add New Item</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="barcode">Barcode</string>
+    <string name="save">Save</string>
+    <string name="invalid_name">Invalid name</string>
+    <string name="invalid_price">Invalid price</string>
+    <string name="invalid_barcode">Invalid barcode</string>
+    <string name="product_added_successfully">Product added successfully</string>
 </resources>

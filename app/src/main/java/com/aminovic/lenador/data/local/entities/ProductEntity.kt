@@ -11,13 +11,13 @@ data class ProductEntity(
     val id: Int? = null,
 
     @ColumnInfo(name = "name")
-    val name: String? = null,
+    val name: String,
 
     @ColumnInfo(name = "barcode")
-    val barcode: String? = null,
+    val barcode: String,
 
     @ColumnInfo(name = "price")
-    val price: Double? = null,
+    val price: Double,
 )
 
 const val PRODUCTS_TABLE_NAME = "products_table"
