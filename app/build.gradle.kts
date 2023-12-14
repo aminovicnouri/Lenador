@@ -87,6 +87,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycleRuntimeComposeVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleRuntimeViewmodelComposeVersion")
 
+    implementation ("androidx.compose.material:material-icons-extended:1.4.3")
+
+
     // Dagger - Hilt
     implementation("com.google.dagger:hilt-android:$hiltAndroidVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltAndroidVersion")
