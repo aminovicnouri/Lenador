@@ -7,6 +7,7 @@ import com.aminovic.lenador.data.local.PosDatabase
 import com.aminovic.lenador.data.repository.PosRepositoryImpl
 import com.aminovic.lenador.domain.repository.PosRepository
 import com.aminovic.lenador.domain.use_cases.InsertOrderUseCase
+import com.aminovic.lenador.domain.use_cases.LoadProductsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,7 +43,13 @@ object AppModule {
     // use cases
     @Provides
     @Singleton
-    fun provideInsertOrderUseCasey(repository: PosRepository): InsertOrderUseCase {
+    fun provideInsertOrderUseCase(repository: PosRepository): InsertOrderUseCase {
         return InsertOrderUseCase(repository = repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLoadProductsUseCase(repository: PosRepository): LoadProductsUseCase {
+        return LoadProductsUseCase(repository = repository)
     }
 }

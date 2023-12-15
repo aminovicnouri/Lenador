@@ -93,6 +93,7 @@ class AddProductViewModel @Inject constructor(
             }
             if (state.value.errorMessage == null) {
                 insertOrderUseCase(state.value.product)
+                _state.update { AddProductState() }
                 _uiEvent.send(UiEvent.Success)
             }
         }
