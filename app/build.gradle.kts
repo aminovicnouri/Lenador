@@ -88,6 +88,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleRuntimeViewmodelComposeVersion")
 
     implementation ("androidx.compose.material:material-icons-extended:1.4.3")
+    implementation("com.seanproctor:data-table-material3:0.5.1")
+
 
 
     // Dagger - Hilt

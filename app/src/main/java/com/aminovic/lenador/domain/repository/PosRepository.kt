@@ -13,4 +13,7 @@ interface PosRepository {
     suspend fun clearProducts()
 
     suspend fun getProductById(id: Int): Product?
+
+    fun setTaxInclusive(taxInclusive: Boolean)
+    fun getTaxInclusive(): Boolean
 }

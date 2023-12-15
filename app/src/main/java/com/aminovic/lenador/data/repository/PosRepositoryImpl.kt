@@ -1,5 +1,6 @@
 package com.aminovic.lenador.data.repository
 
+import android.content.SharedPreferences
 import com.aminovic.lenador.data.local.PosDao
 import com.aminovic.lenador.data.mappers.toProduct
 import com.aminovic.lenador.data.mappers.toProductEntity
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.map
 
 class PosRepositoryImpl(
     private val dao: PosDao,
+    private val sharedPref: SharedPreferences,
 ) : PosRepository {
     override suspend fun insertProduct(product: Product) {
         dao.insertProduct(product.toProductEntity())
@@ -29,5 +31,13 @@ class PosRepositoryImpl(
 
     override suspend fun getProductById(id: Int): Product? {
         return dao.getProductById(id)?.toProduct()
+    }
+
+    override fun setTaxInclusive(taxInclusive: Boolean) {
+        sharedPref.edit().putBoolean("taxInclusive", taxInclusive).apply()
+    }
+
+    override fun getTaxInclusive(): Boolean {
+        return sharedPref.getBoolean("taxInclusive", false)
     }
 }

@@ -3,7 +3,7 @@ package com.aminovic.presentation.composables.add_product_dialog
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aminovic.lenador.R
-import com.aminovic.lenador.domain.use_cases.InsertOrderUseCase
+import com.aminovic.lenador.domain.use_cases.InsertProductUseCase
 import com.aminovic.lenador.domain.utils.UiEvent
 import com.aminovic.lenador.domain.utils.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddProductViewModel @Inject constructor(
-    private val insertOrderUseCase: InsertOrderUseCase,
+    private val insertProductUseCase: InsertProductUseCase,
 ) : ViewModel() {
 
     // Mutable state flow for holding the UI state of the screen.
@@ -92,7 +92,7 @@ class AddProductViewModel @Inject constructor(
                 }
             }
             if (state.value.errorMessage == null) {
-                insertOrderUseCase(state.value.product)
+                insertProductUseCase(state.value.product)
                 _state.update { AddProductState() }
                 _uiEvent.send(UiEvent.Success)
             }

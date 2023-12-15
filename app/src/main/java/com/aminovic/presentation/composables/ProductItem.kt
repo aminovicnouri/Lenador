@@ -1,5 +1,6 @@
 package com.aminovic.presentation.composables
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,12 +24,16 @@ import androidx.compose.ui.unit.sp
 import com.aminovic.lenador.domain.modal.Product
 
 @Composable
-fun ProductItem(item: Product) {
+fun ProductItem(
+    item: Product,
+    onClick: () -> Unit,
+) {
     Card(
         modifier = Modifier
             .padding(4.dp)
             .fillMaxWidth()
-            .height(150.dp),
+            .height(150.dp)
+            .clickable { onClick() },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary)
     ) {
         Column(

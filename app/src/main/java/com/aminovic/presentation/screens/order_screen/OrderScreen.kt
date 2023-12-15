@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -35,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aminovic.lenador.R
 import com.aminovic.lenador.domain.modal.Product
+import com.aminovic.presentation.composables.OrderItemsTable
 import com.aminovic.presentation.composables.ProductItem
 import com.aminovic.presentation.composables.add_product_dialog.AddProductDialog
 
@@ -98,7 +100,28 @@ fun OrderScreen(
                             .fillMaxWidth()
                             .alpha(0.7f)
                     )
-
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Divider(
+                        thickness = 1.dp,
+                        color = Color.DarkGray,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .alpha(0.7f)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f)
+                    ) {
+                        OrderItemsTable(state.order)
+                    }
+                    Divider(
+                        thickness = 1.dp,
+                        color = Color.DarkGray,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .alpha(0.7f)
+                    )
                 }
 
                 Divider(
@@ -154,7 +177,9 @@ fun OrderScreen(
                         ),
                         content = {
                             items(state.products) { item: Product ->
-                                ProductItem(item)
+                                ProductItem(
+                                    item = item,
+                                    onClick = { onEvent(OrderEvent.AddProductToOrder(item)) })
                             }
                         }
                     )

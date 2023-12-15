@@ -5,7 +5,7 @@ import com.aminovic.lenador.domain.repository.PosRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class InsertOrderUseCase(
+class InsertProductUseCase(
     private val repository: PosRepository,
 ) {
     suspend operator fun invoke(product: Product) {

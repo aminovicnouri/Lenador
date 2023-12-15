@@ -28,5 +28,5 @@ interface PosDao {
     suspend fun clearProducts()
 
     @Query("SELECT * FROM $PRODUCTS_TABLE_NAME WHERE id = :id")
-    suspend fun getProductById(id: Int): ProductEntity
+    suspend fun getProductById(id: Int): ProductEntity?
 }
