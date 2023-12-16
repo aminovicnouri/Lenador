@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.aminovic.lenador.data.local.type_converters.OrderItemEntityConverters
+import com.aminovic.lenador.domain.modal.OrderStatus
 
 @Entity(tableName = ORDERS_TABLE_NAME)
 @TypeConverters(OrderItemEntityConverters::class)
@@ -15,6 +16,9 @@ data class OrderEntity(
 
     @ColumnInfo(name = "items")
     val items: List<OrderItemEntity> = emptyList(),
+
+    @ColumnInfo(name = "status")
+    val status: OrderStatus,
 
     @ColumnInfo(name = "total")
     val total: Double,

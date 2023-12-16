@@ -37,6 +37,7 @@ fun Order.toOrderEntity() = OrderEntity(
     tax = total,
     discount = discount,
     quantity = quantity,
+    status = status
 )
 
 suspend fun OrderEntity.toOrder(repository: PosRepository) = Order(
@@ -51,4 +52,5 @@ suspend fun OrderEntity.toOrder(repository: PosRepository) = Order(
     tax = total,
     discount = discount,
     quantity = quantity,
+    status = status
 )

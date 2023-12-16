@@ -23,4 +23,12 @@
     <string name="payment">Payment</string>
     <string name="total_items">Total Items</string>
     <string name="subtotal">Subtotal</string>
+    <string name="id">ID</string>
+    <string name="status">Status</string>
+    <string name="amount">Amount</string>
+    <string name="items">Items</string>
+    <string name="date">Date</string>
+    <string name="summary_as_per_the_filter">Summary</string>
+    <string name="tax_inclusive">Tax inclusive</string>
+    <string name="settings">Settings</string>
 </resources>

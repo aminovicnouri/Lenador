@@ -4,6 +4,7 @@ import java.time.LocalDateTime
 
 data class  Order(
     val id: Int? = null,
+    val status: OrderStatus = OrderStatus.NEW,
     val items: List<OrderItem> = emptyList(),
     val total: Double = 0.0,
     val subTotal: Double = 0.0,

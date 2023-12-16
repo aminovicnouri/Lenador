@@ -327,14 +327,16 @@ fun OrderScreen(
                                 PosButton(
                                     text = stringResource(R.string.payment),
                                     icon = Icons.Default.Payment,
-                                    onClick = {}
+                                    onClick = {
+                                        onEvent(OrderEvent.SaveOrder(paid = true))
+                                    }
                                 )
                                 Spacer(modifier = Modifier.height(5.dp))
                                 PosButton(
                                     text = "Suspend",
                                     icon = Icons.Default.Pause,
                                     onClick = {
-                                        onEvent(OrderEvent.SaveOrder)
+                                        onEvent(OrderEvent.SaveOrder(paid = false))
                                     }
                                 )
                             }

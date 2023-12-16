@@ -3,6 +3,7 @@ package com.aminovic.presentation.screens.order_screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aminovic.lenador.domain.modal.OrderItem
+import com.aminovic.lenador.domain.modal.OrderStatus
 import com.aminovic.lenador.domain.modal.Product
 import com.aminovic.lenador.domain.repository.PosRepository
 import com.aminovic.lenador.domain.use_cases.CalculateTaxUseCase
@@ -76,15 +77,19 @@ class OrderViewModel @Inject constructor(
                 deleteProductFomOrder(event.productId)
             }
 
-            OrderEvent.SaveOrder -> {
-                saveProduct()
+            is OrderEvent.SaveOrder -> {
+                saveProduct(event.paid)
             }
         }
     }
 
-    private fun saveProduct() {
+    private fun saveProduct(paid: Boolean = false) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insertOrder(state.value.order)
+            repository.insertOrder(
+                state.value.order.copy(
+                    status = if (paid) OrderStatus.PAID else OrderStatus.SUSPENDED
+                )
+            )
             _uiEvent.send(UiEvent.Success)
         }
     }

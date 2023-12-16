@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FileCopy
-import androidx.compose.material.icons.filled.Insights
 import androidx.compose.material.icons.filled.NoteAdd
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,7 +27,8 @@ import com.aminovic.presentation.composables.HomeItem
 @Composable
 fun HomeScreen(
     navigateToNewOrder: () -> Unit,
-    navigateToOrders: () -> Unit
+    navigateToOrders: () -> Unit,
+    navigateToSettings: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -50,17 +51,19 @@ fun HomeScreen(
             HomeItem(
                 title = stringResource(R.string.new_order),
                 icon = Icons.Filled.NoteAdd,
-                onClick = navigateToNewOrder)
+                onClick = navigateToNewOrder
+            )
             Spacer(modifier = Modifier.width(20.dp))
             HomeItem(
                 title = stringResource(R.string.orders),
                 icon = Icons.Filled.FileCopy,
-                onClick = {})
+                onClick = { navigateToOrders() })
             Spacer(modifier = Modifier.width(20.dp))
             HomeItem(
-                title = stringResource(R.string.report),
-                icon = Icons.Filled.Insights,
-                onClick = {})
+                title = stringResource(R.string.settings),
+                icon = Icons.Filled.Settings,
+                onClick = navigateToSettings
+            )
         }
     }
 }
