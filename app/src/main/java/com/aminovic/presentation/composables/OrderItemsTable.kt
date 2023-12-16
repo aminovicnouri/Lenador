@@ -1,7 +1,12 @@
 package com.aminovic.presentation.composables
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,12 +23,12 @@ import java.util.Locale
 
 
 @Composable
-fun OrderItemsTable(order: Order) {
+fun OrderItemsTable(order: Order, delete: (Int) -> Unit) {
     PaginatedDataTable(
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.primary),
-        state = rememberPaginatedDataTableState(6),
+        state = rememberPaginatedDataTableState(5),
         columns = listOf(
             DataColumn(width = TableColumnWidth.Flex(3f)) {
                 Text(
@@ -78,6 +83,21 @@ fun OrderItemsTable(order: Order) {
                 cell { Text(String.format(Locale.US, "%.2f", item.discount), color = Color.White) }
                 cell { Text(item.quantity.toString(), color = Color.White) }
                 cell { Text(String.format(Locale.US, "%.2f", item.total), color = Color.White) }
+                cell {
+                    Box {
+                        IconButton(onClick = {
+                            delete(item.product.id!!)
+                        }) {
+                            Icon(
+                                //   modifier = Modifier.size(48.dp),
+                                imageVector = Icons.Filled.Delete,
+                                contentDescription = null,
+                                tint = Color.White
+                            )
+                        }
+                    }
+
+                }
             }
         }
     }

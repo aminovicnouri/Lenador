@@ -2,8 +2,11 @@ package com.aminovic.lenador.data.repository
 
 import android.content.SharedPreferences
 import com.aminovic.lenador.data.local.PosDao
+import com.aminovic.lenador.data.mappers.toOrder
+import com.aminovic.lenador.data.mappers.toOrderEntity
 import com.aminovic.lenador.data.mappers.toProduct
 import com.aminovic.lenador.data.mappers.toProductEntity
+import com.aminovic.lenador.domain.modal.Order
 import com.aminovic.lenador.domain.modal.Product
 import com.aminovic.lenador.domain.repository.PosRepository
 import kotlinx.coroutines.flow.Flow
@@ -31,6 +34,26 @@ class PosRepositoryImpl(
 
     override suspend fun getProductById(id: Int): Product? {
         return dao.getProductById(id)?.toProduct()
+    }
+
+    override suspend fun insertOrder(order: Order) {
+        dao.insertOrder(order.toOrderEntity())
+    }
+
+    override fun getOrders(): Flow<List<Order>> {
+        return dao.getOrders().map { it.map { it1 -> it1.toOrder(this) } }
+    }
+
+    override suspend fun deleteOrder(order: Order) {
+        dao.deleteOrder(order.toOrderEntity())
+    }
+
+    override suspend fun clearOrders() {
+        dao.clearOrders()
+    }
+
+    override suspend fun getOrderById(id: Int): Order? {
+        return dao.getOrderById(id)?.toOrder(this)
     }
 
     override fun setTaxInclusive(taxInclusive: Boolean) {

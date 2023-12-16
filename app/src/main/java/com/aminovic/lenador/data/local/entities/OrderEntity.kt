@@ -21,6 +21,18 @@ data class OrderEntity(
 
     @ColumnInfo(name = "time")
     val time: Long,
+
+    @ColumnInfo(name = "subTotal")
+    val subTotal: Double,
+
+    @ColumnInfo(name = "tax")
+    val tax: Double,
+
+    @ColumnInfo(name = "discount")
+    val discount: Double,
+
+    @ColumnInfo(name = "quantity")
+    val quantity: Int,
 )
 
 const val ORDERS_TABLE_NAME = "orders_table"

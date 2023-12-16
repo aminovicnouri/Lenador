@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     composable(route = Screens.NewOrderScreen.route) {
                         val orderViewModel: OrderViewModel = hiltViewModel()
                         val state by orderViewModel.state.collectAsStateWithLifecycle()
-                        OrderScreen(state = state, onEvent = orderViewModel::onEvent)
+                        OrderScreen(state = state, onEvent = orderViewModel::onEvent, uiEvent = orderViewModel.uiEvent ,popBackStack = {navController.popBackStack()})
                     }
                 }
             }
